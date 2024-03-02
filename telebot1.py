@@ -1,4 +1,3 @@
-
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types.web_app_info import WebAppInfo
@@ -16,5 +15,5 @@ async def start(message: types.Message):
     await message.answer("Hello, my friend!", reply_markup=markup)
 
 if __name__ == '__main__':
-    from handlers import dp
+    from aiogram import executor
     executor.start_polling(dp)
