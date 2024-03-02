@@ -9,7 +9,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add(KeyboardButton("Open Website", web_app=WebAppInfo (url='https://github.com/Ali-Sayeed/telegram-web-app1')))
+    markup.add(KeyboardButton("Open Website", web_app=WebAppInfo (url='https://sayeediy.github.io/')))
     await message.answer("Hello, my friend!", reply_markup=markup)
 
 if __name__ == '__main__':
