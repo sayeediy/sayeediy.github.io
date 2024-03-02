@@ -1,7 +1,7 @@
 from aiogram.types import WebAppInfo
 from aiogram import types
 
-web_app = WebAppInfo(url='https://github.com/Ali-Sayeed/telegram-web-app1')
+web_app = WebAppInfo(url='https://sayeediy.github.io/')
 
 keyboard = types.ReplyKeyboardMarkup(
     keyboard=[
