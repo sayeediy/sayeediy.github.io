@@ -2,9 +2,11 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types.web_app_info import WebAppInfo
 
+from config import BOT_TOKEN
 
-bot = Bot('6995587565:AAFTjc42wGPy9GDZy677tBViryb5AmD2Dz8')
-dp = Dispatcher(bot)
+loop = asyncio.new_event_loop()
+bot = Bot(BOT_TOKEN, parse_mode='HTML')
+dp = Dispatcher(bot, loop)
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
@@ -13,5 +15,5 @@ async def start(message: types.Message):
     await message.answer("Hello, my friend!", reply_markup=markup)
 
 if __name__ == '__main__':
-    from aiogram import executor
+    from handlers import dp
     executor.start_polling(dp)
