@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cart Page</title>
+    <style>
+        /* Add some basic styling for better appearance */
+        .cart-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Your Shopping Cart</h1>
+
+    <!-- Display cart items (this could be dynamically generated based on the items in the cart) -->
+    <div class="cart-item">
+        <h3>Product 1</h3>
+        <p>Price: $19.99</p>
+        <!-- Additional product details -->
+        <button onclick="removeFromCart(1)">Remove from Cart</button>
+    </div>
+
+    <div class="cart-item">
+        <!-- Product 2 and others... -->
+    </div>
+
+    <!-- Provide options for checkout or continue shopping -->
+    <p>Total: $19.99</p>
+    <button onclick="checkout()">Checkout</button>
+    <a href="products.html"><button>Continue Shopping</button></a>
+
+    <script>
+        // JavaScript function to remove product from cart
+        function removeFromCart(productId) {
+            // Add logic to handle removing the product from the cart
+            alert("Product removed from cart!");
+        }
+
+        // JavaScript function to handle checkout
+        function checkout() {
+            // Add logic to handle the checkout process
+            alert("Proceeding to checkout...");
+        }
+    </script>
+
+</body>
+
+</html>

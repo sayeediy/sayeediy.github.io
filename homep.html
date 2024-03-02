@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+    <style>
+        /* Add some basic styling for better appearance */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            /* Adjust the maximum width as needed */
+            margin: 0 auto;
+            /* Center the container */
+        }
+
+        .inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Three columns */
+            gap: 20px;
+            /* Adjust the gap between items */
+        }
+
+        .img {
+            width: 75%;
+            height: auto;
+            animation: spin 9.5s linear infinite;
+            border-radius: 100px;
+        }
+
+        .item {
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            background: rgb(248, 168, 24);
+            border-radius: 10px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: background .2s linear;
+        }
+
+        .button:hover {
+            background: lightgreen;
+        }
+
+        .usercard {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Do'konimizga Xush Kelibsiz!</h1>
+    <div class="container">
+        <div class="inner">
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 1</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 2</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button id="buy" class="button">Mahsulot 3</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 4</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 5</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 6</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 7</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 8</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 9</button></a>
+            </div>
+            <div class="item">
+                <img src="ss.jpg" alt="" class="img">
+                <a href="index.html"><button class="button">Mahsulot 10</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- Button to go to the Cart page 
+    <a href="cartp.html"><button class="button">Cart</button></a>
+
+     Button to go to the Products page 
+    <a href="index.html"><button class="button">Browse Products</button></a>-->
+</body>
+
+</html>
