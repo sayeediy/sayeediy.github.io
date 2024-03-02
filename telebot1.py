@@ -7,7 +7,7 @@ from config import BOT_TOKEN
 
 
 bot = Bot(BOT_TOKEN, parse_mode='HTML')
-dp = Dispatcher(bot, loop)
+dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
