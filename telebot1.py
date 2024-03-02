@@ -5,7 +5,7 @@ from aiogram.types.web_app_info import WebAppInfo
 from config import BOT_TOKEN
 
 
-bot = Bot(BOT_TOKEN, parse_mode='HTML')
+bot = Bot('6995587565:AAFTjc42wGPy9GDZy677tBViryb5AmD2Dz8')
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
