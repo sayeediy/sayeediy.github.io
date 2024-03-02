@@ -1,11 +1,11 @@
-import asyncio
+
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types.web_app_info import WebAppInfo
 
 from config import BOT_TOKEN
 
-loop = asyncio.new_event_loop()
+
 bot = Bot(BOT_TOKEN, parse_mode='HTML')
 dp = Dispatcher(bot, loop)
 
