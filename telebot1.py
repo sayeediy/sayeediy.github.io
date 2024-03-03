@@ -1,19 +1,17 @@
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, types
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types.web_app_info import WebAppInfo
 
-import asyncio
 
-bot = Bot(token='token')
-dp = Dispatcher(bot=bot)
+bot = Bot('6995587565:AAFTjc42wGPy9GDZy677tBViryb5AmD2Dz8')
+dp = Dispatcher(bot)
 
-async def main():
-    from handlers import dp
-    try:
-        await dp.start_polling()
-    finally:
-        await bot.session.close()
+@dp.message_handler(commands=['start'])
+async def start(message: types.Message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add(KeyboardButton("Open Website", web_app=WebAppInfo (url='https://sayeediy.github.io/')))
+    await message.answer("Hello, my friend!", reply_markup=markup)
 
-if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except (KeyboardInterrupt, SystemExit):
-        print('Bot stopped!')
+if __name__ == '__main__':
+    from aiogram import executor
+    executor.start_polling(dp)
