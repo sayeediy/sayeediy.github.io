@@ -23,7 +23,7 @@ async def buy_process(web_app_message):
                            title='Laptop',
                            description='Description',
                            provider_token='pay_token',
-                           currency='som',
+                           currency='rub',
                            need_email=True,
                            prices=PRICE[f'{web_app_message.web_app_data.data}'],
                            start_parameter='example',
