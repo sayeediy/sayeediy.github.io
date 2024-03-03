@@ -1,7 +1,8 @@
-from main import bot, dp
-from keyboards import keyboard
+from telebot1 import bot, dp
+from keyboard import keyboard
 from aiogram import types
 from aiogram.dispatcher.filters import Command
+import config
 
 @dp.message_handler(Command('start'))
 async def start(message: types.Message):
@@ -22,8 +23,8 @@ async def buy_process(web_app_message):
     await bot.send_invoice(web_app_message.chat.id,
                            title='Laptop',
                            description='Description',
-                           provider_token='pay_token',
-                           currency='rub',
+                           provider_token= PAYMENT_TOKEN,
+                           currency='sum',
                            need_email=True,
                            prices=PRICE[f'{web_app_message.web_app_data.data}'],
                            start_parameter='example',
