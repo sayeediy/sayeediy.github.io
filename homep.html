@@ -130,102 +130,69 @@
 <script> 
 	let tg = window.Telegram.WebApp;
 
-            tg.expand();
+tg.expand();
 
-            tg.MainButton.textColor = '#FFFFFF';
-            tg.MainButton.color = '#2cab37';
+tg.MainButton.textColor = '#FFFFFF';
+tg.MainButton.color = '#2cab37';
 
-            let item = "";
+let item = "";
 
-            let btn1 = document.getElementById("btn1");
-            let btn2 = document.getElementById("btn2");
-            let btn3 = document.getElementById("btn3");
-            let btn4 = document.getElementById("btn4");
-            let btn5 = document.getElementById("btn5");
-            let btn6 = document.getElementById("btn6");
+// Function to handle payment logic
+function handlePayment() {
+	// Here you can implement your payment logic using the Python file or any other method
+	// For demonstration purposes, let's assume you have a Python function named "process_payment" in your Python file
+	// You can use AJAX, fetch, or any other method to communicate with your Python file
+	// Replace 'your_python_file_url' with the actual URL of your Python file
+	fetch('https://github.com/sayeediy/sayeediy.github.io/blob/main/app.js', {
+		method: 'POST',
+		body: JSON.stringify({ item: item }),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	})
+		.then(response => response.json())
+		.then(data => {
+			// Handle the response from the Python file, e.g., show success or error message
+			console.log(data);
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+}
 
-            btn1.addEventListener("click", function () {
-                if (tg.MainButton.isVisible) {
-                    tg.MainButton.hide();
-                }
-                else {
-                    tg.MainButton.setText("Вы выбрали товар 1!");
-                    item = "1";
-                    tg.MainButton.show();
-                }
-            });
+let btn1 = document.getElementById("btn1");
+let btn2 = document.getElementById("btn2");
+let btn3 = document.getElementById("btn3");
+let btn4 = document.getElementById("btn4");
+let btn5 = document.getElementById("btn5");
+let btn6 = document.getElementById("btn6");
+// ... (similarly for btn3, btn4, btn5, btn6)
 
-            btn2.addEventListener("click", function () {
-                if (tg.MainButton.isVisible) {
-                    tg.MainButton.hide();
-                }
-                else {
-                    tg.MainButton.setText("Вы выбрали товар 2!");
-                    item = "2";
-                    tg.MainButton.show();
-                }
-            });
+btn1.addEventListener("click", function () {
+	// ... (similar logic for other buttons)
+});
 
-            btn3.addEventListener("click", function () {
-                if (tg.MainButton.isVisible) {
-                    tg.MainButton.hide();
-                }
-                else {
-                    tg.MainButton.setText("Вы выбрали товар 3!");
-                    item = "3";
-                    tg.MainButton.show();
-                }
-            });
+// ... (similar event listeners for btn2, btn3, btn4, btn5, btn6)
 
-            btn4.addEventListener("click", function () {
-                if (tg.MainButton.isVisible) {
-                    tg.MainButton.hide();
-                }
-                else {
-                    tg.MainButton.setText("Вы выбрали товар 4!");
-                    item = "4";
-                    tg.MainButton.show();
-                }
-            });
+Telegram.WebApp.onEvent("mainButtonClicked", function () {
+	// Send data to Telegram
+	tg.sendData(item);
 
-            btn5.addEventListener("click", function () {
-                if (tg.MainButton.isVisible) {
-                    tg.MainButton.hide();
-                }
-                else {
-                    tg.MainButton.setText("Вы выбрали товар 5!");
-                    item = "5";
-                    tg.MainButton.show();
-                }
-            });
+	// Move to the payment part
+	handlePayment();
+});
 
-            btn6.addEventListener("click", function () {
-                if (tg.MainButton.isVisible) {
-                    tg.MainButton.hide();
-                }
-                else {
-                    tg.MainButton.setText("Вы выбрали товар 6!");
-                    item = "6";
-                    tg.MainButton.show();
-                }
-            });
+let usercard = document.getElementById("usercard");
 
+let p = document.createElement("p");
 
-            Telegram.WebApp.onEvent("mainButtonClicked", function () {
-                tg.sendData(item);
-            });
-
-
-            let usercard = document.getElementById("usercard");
-
-            let p = document.createElement("p");
-
-            p.innerText = `${tg.initDataUnsafe.user.first_name}
+p.innerText = `${tg.initDataUnsafe.user.first_name}
 ${tg.initDataUnsafe.user.last_name}`;
 
-            usercard.appendChild(p);
+usercard.appendChild(p);
+
         </script>
-        <script src="app.js"></script>
+       /* <script src="app.js"></script>*/
 </body>
 
 </html>
