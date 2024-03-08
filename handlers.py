@@ -1,5 +1,3 @@
-
-
 from telebot1 import bot, dp
 from keyboard import keyboard
 from aiogram import types
@@ -11,17 +9,6 @@ async def start(message: types.Message):
     await bot.send_message(message.chat.id, 'Тестируем WebApp!',
                            reply_markup=keyboard)
 
-# Add the new imports for handling payment process
-from aiogram.types import LabeledPrice
-from aiogram.dispatcher import FSMContext
-
-# Add the new functions for handling payment process
-async def send_invoice(chat_id, selected_item):
-    # Your logic to send an invoice
-    # Use the selected_item to determine the details of the invoice
-    # ...
-
-# Your dictionary of prices
 PRICE = {
     '1': [types.LabeledPrice(label='Item1', amount=100000)],
     '2': [types.LabeledPrice(label='Item2', amount=200000)],
@@ -33,24 +20,13 @@ PRICE = {
 
 @dp.message_handler(content_types='web_app_data')
 async def buy_process(web_app_message):
-    # Ensure the correct data is received from the web app
-    selected_item = web_app_message.web_app_data.data
-
-    # Your logic to handle the payment process
-    # For example, send an invoice, update the UI, etc.
-    await send_invoice(web_app_message.chat.id, selected_item)
-
-    # Get the payment token from your config module
-    PAYMENT_TOKEN = config.PAYMENT_TOKEN
-
-    # Send the invoice
     await bot.send_invoice(web_app_message.chat.id,
                            title='Laptop',
                            description='Description',
-                           provider_token=PAYMENT_TOKEN,
+                           provider_token= PAYMENT_TOKEN,
                            currency='sum',
                            need_email=True,
-                           prices=PRICE[selected_item],  # Use selected_item to get the prices
+                           prices=PRICE[f'{web_app_message.web_app_data.data}'],
                            start_parameter='example',
                            payload='some_invoice')
 
@@ -61,5 +37,4 @@ async def pre_checkout_process(pre_checkout: types.PreCheckoutQuery):
 @dp.message_handler(content_types=types.ContentType.SUCCESSFUL_PAYMENT)
 async def successful_payment(message: types.Message):
     await bot.send_message(message.chat.id, 'Платеж прошел успешно!')
-
 
