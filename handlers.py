@@ -2,12 +2,26 @@ from telebot1 import bot, dp
 from keyboard import keyboard
 from aiogram import types
 from aiogram.dispatcher.filters import Command
-import config
 
 @dp.message_handler(Command('start'))
 async def start(message: types.Message):
     await bot.send_message(message.chat.id, 'Тестируем WebApp!',
                            reply_markup=keyboard)
+
+@dp.message_handler(commands=['start'])
+async def start(message: types.Message):
+    await message.answer("Welcome! Click the button below to generate an invoice link.")
+
+    # Generate invoice link
+    invoice_payload = "your_custom_invoice_data"
+    invoice_link = f"https://gate.global.uz/pay?payload={invoice_payload}"
+
+    # Create a button with the invoice link
+    keyboard = InlineKeyboardMarkup()
+    keyboard.add(InlineKeyboardButton("Make Payment", url=invoice_link))
+
+    await message.answer("Click the button to make a payment:", reply_markup=keyboard)
+
 
 PRICE = {
     '1': [types.LabeledPrice(label='Item1', amount=100000)],
@@ -23,8 +37,8 @@ async def buy_process(web_app_message):
     await bot.send_invoice(web_app_message.chat.id,
                            title='Laptop',
                            description='Description',
-                           provider_token= PAYMENT_TOKEN,
-                           currency='sum',
+                           provider_token='pay_token',
+                           currency='uzs',
                            need_email=True,
                            prices=PRICE[f'{web_app_message.web_app_data.data}'],
                            start_parameter='example',
@@ -37,4 +51,5 @@ async def pre_checkout_process(pre_checkout: types.PreCheckoutQuery):
 @dp.message_handler(content_types=types.ContentType.SUCCESSFUL_PAYMENT)
 async def successful_payment(message: types.Message):
     await bot.send_message(message.chat.id, 'Платеж прошел успешно!')
+
 
